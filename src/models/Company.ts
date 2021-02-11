@@ -23,6 +23,14 @@ export interface Address extends Document {
   postCode: string;
 }
 
+export interface CompanyInput {
+  name: string,
+  tradingName: string,
+  registry: string,
+  address: Address,
+  benefits: Benefit[]
+}
+
 export interface ICompany extends Document {
   name: string;
   tradingName: string;
