@@ -1,0 +1,27 @@
+{
+  "name": "back-exercicio-flash",
+  "version": "1.0.0",
+  "description": "Projeto backend com capacidade de criar registros de empresas e colaboradores, além de uma rota para consultar a lista de colaboradores de uma determinada empresa.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && node ./build/src/index.js",
+    "build": "clear && echo \"Transpiling files...\" && tsc && echo \"Done!\" "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpontosalgado/back-exercicio-flash.git"
+  },
+  "keywords": [
+    "flash",
+    "nodejs",
+    "typescript",
+    "mongodb",
+    "mongoose"
+  ],
+  "author": "rpontosalgado",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpontosalgado/back-exercicio-flash/issues"
+  },
+  "homepage": "https://github.com/rpontosalgado/back-exercicio-flash#readme"
+}
