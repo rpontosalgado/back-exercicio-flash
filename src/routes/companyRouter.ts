@@ -1,5 +1,6 @@
 import express, { Router } from "express";
+import CompanyController from "../controllers/CompanyController";
 
 export const companyRouter: Router = express.Router();
 
-// companyRouter.post("/", companyController.createCompany);
+companyRouter.post("/", CompanyController.createCompany);
