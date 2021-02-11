@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import Company, { CompanyInput, ICompany } from "../models/Company";
 
 export class CompanyController {
-  async createCompany(req: Request, res: Response) {
+  async createCompany(req: Request, res: Response): Promise<void> {
     try {
       const input: CompanyInput = {
         name: req.body.name,
@@ -16,7 +16,9 @@ export class CompanyController {
 
       res.status(201).send({ company });
     } catch (error) {
-      
+      res.status(500).send(error);
     }
   }
 }
+
+export default new CompanyController();
