@@ -1,13 +1,15 @@
 import express, { Express } from "express";
 import cors from "cors";
 import { AddressInfo } from "net";
+import { companyRouter } from "./routes/companyRouter";
+import { employeeRouter } from "./routes/employeeRouter";
 
 const app: Express = express();
 app.use(express.json());
 app.use(cors());
 
-// app.use("/company", companyRouter);
-// app.use("/employee", employeeRouter);
+app.use("/company", companyRouter);
+app.use("/employee", employeeRouter);
 
 const server = app.listen(process.env.PORT || 3003, () => {
   if (server) {
