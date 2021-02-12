@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Company, { CompanyInput, ICompany } from "../models/Company";
+import Company, { CompanyInput, CompanyNameOutput, ICompany } from "../models/Company";
 
 export class CompanyController {
   async createCompany(req: Request, res: Response): Promise<void> {
@@ -42,11 +42,15 @@ export class CompanyController {
   async getCompanyNames(req: Request, res: Response): Promise<void> {
     try {
       
-      const companies = await Company
+      const companies: CompanyNameOutput[] = await Company
         .find( {}, { _id: 0, name: 1 } )
         .exec();
 
-      res.status(200).send({ companies });
+      const companyNamesArray: string[] = companies.map(item => item.name);
+
+      res.status(200).send({
+        companies: companyNamesArray
+      });
 
     } catch (error) {
       res.status(500).send({error});
