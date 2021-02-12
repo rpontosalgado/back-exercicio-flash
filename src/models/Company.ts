@@ -32,6 +32,10 @@ export interface CompanyInput {
   benefits: Benefit[]
 }
 
+export interface CompanyNameOutput {
+  name: string;
+}
+
 export interface ICompany extends Document {
   name: string;
   tradingName: string;
