@@ -54,7 +54,7 @@ export class EmployeeController {
       const company: string = req.params.company;
 
       const employees: IEmployee[] = await Employee
-        .find({ company: company })
+        .find({ company: company }, { __v: 0 })
         .exec();
 
       res.status(200).send({ employees });
