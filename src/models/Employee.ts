@@ -2,7 +2,7 @@ import mongoose, { Schema, Document } from "mongoose";
 import Company, { ICompany } from "./Company";
 
 export interface EmployeeInput {
-  companyId: string;
+  company: string;
   name: string;
   surname: string;
   identification: string;
@@ -10,7 +10,7 @@ export interface EmployeeInput {
 }
 
 export interface IEmployee extends Document {
-  companyId: ICompany['_id'];
+  company: ICompany['name'];
   name: string;
   surname: string;
   identification: string;
@@ -18,7 +18,7 @@ export interface IEmployee extends Document {
 }
 
 const EmployeeSchema: Schema = new Schema({
-  companyId: { type: Schema.Types.ObjectId, required: true, ref: Company },
+  company: { type: String, required: true, ref: Company },
   name: { type: String, required: true },
   surname: { type: String, required: true },
   identification: { type: String, required: true, unique: true },

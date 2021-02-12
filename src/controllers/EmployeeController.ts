@@ -7,7 +7,7 @@ export class EmployeeController {
     try {
 
       const input: EmployeeInput = {
-        companyId: req.body.companyId,
+        company: req.body.company,
         name: req.body.name,
         surname: req.body.surname,
         identification: req.body.identification,
@@ -51,18 +51,13 @@ export class EmployeeController {
   async getAllEmployeesByCompany(req: Request, res: Response): Promise<void> {
     try {
       
-      const companyId: string = req.params.companyId;
+      const company: string = req.params.company;
 
       const employees: IEmployee[] = await Employee
-        .find({
-          companyId: companyId
-        })
+        .find({ company: company })
         .exec();
 
-      res.status(200).send({
-        employees,
-        companyId
-      });
+      res.status(200).send({ employees });
 
     } catch (error) {
       res.status(500).send({error});
