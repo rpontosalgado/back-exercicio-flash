@@ -1,5 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-import { ICompany } from "./Company";
+import Company, { ICompany } from "./Company";
 
 export interface EmployeeInput {
   companyId: string;
@@ -18,7 +18,7 @@ export interface IEmployee extends Document {
 }
 
 const EmployeeSchema: Schema = new Schema({
-  companyId: { type: Schema.Types.ObjectId, required: true },
+  companyId: { type: Schema.Types.ObjectId, required: true, ref: Company },
   name: { type: String, required: true },
   surname: { type: String, required: true },
   identification: { type: String, required: true, unique: true },

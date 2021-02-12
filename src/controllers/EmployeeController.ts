@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import mongoose, { ObjectId } from "mongoose";
+import mongoose from "mongoose";
 import Employee, { EmployeeInput, IEmployee } from "../models/Employee";
 
 export class EmployeeController {
@@ -53,13 +53,16 @@ export class EmployeeController {
       
       const companyId: string = req.params.companyId;
 
-      const companyObjectId = mongoose.Types.ObjectId(companyId);
-
       const employees: IEmployee[] = await Employee
-        .find({ companyId: companyObjectId })
+        .find({
+          companyId: companyId
+        })
         .exec();
 
-      res.status(200).send({employees});
+      res.status(200).send({
+        employees,
+        companyId
+      });
 
     } catch (error) {
       res.status(500).send({error});
