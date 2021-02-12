@@ -39,7 +39,7 @@ export class CompanyController {
     }
   }
 
-  async getAllEmployeesByCompany(req: Request, res: Response): Promise<void> {
+  async getCompanyNames(req: Request, res: Response): Promise<void> {
     try {
       
       const companies = await Company
