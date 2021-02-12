@@ -5,4 +5,4 @@ export const employeeRouter: Router = express.Router();
 
 employeeRouter.post("/", EmployeeController.createEmployee);
 
-// employeeRouter.get("/:company", employeeController.getAllEmployeesByCompany);
+employeeRouter.get("/:company", EmployeeController.getAllEmployeesByCompany);
