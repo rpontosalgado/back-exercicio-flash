@@ -1,9 +1,16 @@
 import mongoose, { Schema, Document } from "mongoose";
 import { ICompany } from "./Company";
 
+export interface EmployeeInput {
+  companyId: string;
+  name: string;
+  surname: string;
+  identification: string;
+  email: string;
+}
+
 export interface IEmployee extends Document {
   companyId: ICompany['_id'];
-  company: ICompany['name'];
   name: string;
   surname: string;
   identification: string;
