@@ -33,21 +33,17 @@ export class EmployeeController {
         message = `Employee with this ${key} already exists`
       }
 
-      if (error.errors && error.errors.companyId.kind === "ObjectId") {
-        code = 422;
-        message = "Company with this id does not exist";
-      }
-
       if (error.message === "Invalid email") {
         code = 422;
       }
 
       if (error.name === "ValidationError") {
         code = 422;
-        message = "Missing inputs";
+        message = "Invalid inputs";
       }
 
       res.status(code).send({error: message});
+      // res.status(code).send(error);
 
     }
   }
