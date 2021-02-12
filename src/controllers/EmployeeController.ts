@@ -13,6 +13,10 @@ export class EmployeeController {
         email: req.body.email
       };
 
+      if (input.email.indexOf("@") < 0) {
+        throw new Error("Invalid email");
+      }
+
       const employee: IEmployee = await Employee.create(input);
 
       res.status(201).send({ employee });
@@ -29,12 +33,21 @@ export class EmployeeController {
         message = `Employee with this ${key} already exists`
       }
 
+      if (
+        error.errors.companyId.kind === "ObjectId" ||
+        error.message === "Invalid email"
+      ) {
+        code = 422;
+        message = "Invalid inputs";
+      }
+
       if (error.name === "ValidationError") {
         code = 422;
         message = "Missing inputs";
       }
 
-      res.status(code).send({error: message});
+      // res.status(code).send({error: message});
+      res.status(code).send(error);
 
     }
   }
