@@ -34,7 +34,7 @@ export class CompanyController {
         message = "Missing inputs";
       }
 
-      res.status(code).send(error);
+      res.status(code).send({error: message});
 
     }
   }
