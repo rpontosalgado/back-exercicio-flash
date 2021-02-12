@@ -38,6 +38,20 @@ export class CompanyController {
 
     }
   }
+
+  async getAllEmployeesByCompany(req: Request, res: Response): Promise<void> {
+    try {
+      
+      const companies = await Company
+        .find( {}, { _id: 0, name: 1 } )
+        .exec();
+
+      res.status(200).send({ companies });
+
+    } catch (error) {
+      res.status(500).send({error});
+    }
+  }
 }
 
 export default new CompanyController();
