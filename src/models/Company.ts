@@ -20,6 +20,7 @@ export interface Address extends Document {
   district?: string;
   city: string;
   state: string;
+  country: string;
   postCode: string;
 }
 
@@ -50,6 +51,7 @@ const CompanySchema: Schema = new Schema({
     district: { type: String },
     city: { type: String, required: true },
     state: { type: String, required: true },
+    country: { type: String, required: true },
     postCode: { type: String, required: true }
   },
   benefits: {
@@ -58,4 +60,8 @@ const CompanySchema: Schema = new Schema({
   }
 });
 
-export default mongoose.model<ICompany>('Company', CompanySchema);
+export default mongoose.model<ICompany>(
+  'Company',
+  CompanySchema,
+  'company'
+);

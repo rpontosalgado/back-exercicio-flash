@@ -18,4 +18,8 @@ const EmployeeSchema: Schema = new Schema({
   email: { type: String, required: true, unique: true }
 });
 
-export default mongoose.model<IEmployee>('Employee', EmployeeSchema);
+export default mongoose.model<IEmployee>(
+  'Employee',
+  EmployeeSchema,
+  'employee'
+);
