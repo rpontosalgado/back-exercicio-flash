@@ -6,7 +6,11 @@ export default (db: string) => {
     mongoose
       .connect(
         db,
-        { useNewUrlParser: true }
+        {
+          useNewUrlParser: true,
+          useUnifiedTopology: true,
+          useCreateIndex: true
+        }
       )
       .then(() => {
         console.info(`Successfully connected to db: ${db}`);
